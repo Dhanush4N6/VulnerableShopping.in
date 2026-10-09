@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}
+<div class=panel wide><h1>🌐 Import Product from URL</h1>
+<p class=hint>Fetch a product feed from any supplier URL.</p>
+<form method=get><input name=url type=text style="width:100%;padding:9px;border:1px solid #bbb;border-radius:5px" placeholder="https://supplier.example.com/feed.json" value="{{url}}">
+<br><br><button class="btn dark">Fetch</button></form>
+{% if data %}<pre style="background:#f4f4f4;padding:14px;border-radius:8px;margin-top:14px;overflow:auto">{{data}}</pre>{% endif %}
+{% if err %}<p class=error style="margin-top:12px">{{err}}</p>{% endif %}</div>
+{% endblock %}

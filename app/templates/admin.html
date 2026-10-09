@@ -1,0 +1,22 @@
+{% extends "base.html" %}{% block body %}
+<h1>🛠️ Admin Panel</h1>
+<h2>Users</h2>
+<table><tr><th>ID</th><th>Username</th><th>Email</th><th>Role</th></tr>
+{% for u in users %}<tr><td>{{u[0]}}</td><td>{{u[1]}}</td><td>{{u[2]}}</td><td>{{u[3]}}</td></tr>{% endfor %}</table>
+
+<h2 style="margin-top:26px">All Orders</h2>
+<table><tr><th>Order</th><th>User ID</th><th>Items</th><th>Total</th><th>Status</th></tr>
+{% for o in orders %}<tr><td><a href="/order/{{o[0]}}">#{{o[0]}}</a></td><td>{{o[1]}}</td><td>{{o[2]}}</td><td>₹{{o[3]}}</td><td>{{o[4]}}</td></tr>{% endfor %}</table>
+
+<div class="panel" style="margin-top:26px"><h3>➕ Add Product</h3>
+<form method=post action=/admin/product/add>
+  <label>Name</label><input name=name required>
+  <label>Category</label><input name=cat required>
+  <label>Price</label><input name=price required>
+  <label>Description</label><input name=desc>
+  <br><button class="btn dark">Add Product</button></form></div>
+
+<div class=panel><h3>🗑️ Delete Product</h3>
+<form method=post action="/admin/product/delete/1">Product ID: <input name=x style="width:80px;padding:8px;border:1px solid #bbb;border-radius:5px">
+<button class=btn style="background:#c0392b;color:#fff">Delete</button></form></div>
+{% endblock %}

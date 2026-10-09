@@ -1,0 +1,13 @@
+{% extends "base.html" %}{% block body %}
+<div class=panel wide><h1>💳 Payment</h1>
+<div class=total-box style="text-align:left">Amount Payable: ₹{{ '{:,.2f}'.format(total) }}</div>
+<form method=post action=/checkout>
+  <label>Name on Card</label><input name=cardname type=text required>
+  <label>Card Number</label><input name=card type=text placeholder="XXXX-XXXX-XXXX-XXXX" required>
+  <label>Expiry (MM/YY)</label><input name=exp type=text placeholder="12/28" required>
+  <label>CVV</label><input name=cvv type=password maxlength=4 required>
+  <label>Shipping Address</label><input name=addr type=text required>
+  <br><br><button class="btn dark" style="width:100%;font-size:16px">Pay Now</button>
+</form>
+<p class=hint>🔒 Payments are processed securely.</p></div>
+{% endblock %}

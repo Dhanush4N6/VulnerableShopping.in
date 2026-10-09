@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}
+<h1>📦 My Orders</h1>
+{% if not orders %}<p>No orders yet. <a href="/">Start shopping →</a></p>{% endif %}
+{% for o in orders %}
+<div class=cart-line><span><a href="/order/{{o[0]}}">Order #{{o[0]}}</a> — {{o[2]}}</span>
+<span><span class="badge {{o[4]|lower}}">{{o[4]}}</span> &nbsp; ₹{{ '{:,.2f}'.format(o[3]) }}</span></div>
+{% endfor %}{% endblock %}

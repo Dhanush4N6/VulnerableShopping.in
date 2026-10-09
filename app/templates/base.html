@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset=utf-8><title>VShop.in — Online Shopping</title>
+<link rel=stylesheet href="/static/css/style.css"></head>
+<body>
+<nav class=navbar>
+  <a class=logo href="/">VulnerableShopping.in</a>
+  <form method=get action="/"><input type=text name=q placeholder="Search for products..." value="{{ request.args.get('q','') }}"><button>🔍 Search</button></form>
+  <div class=nav-links>
+    <a href="/cart">🛒 Cart</a>
+    {% if session.uid %}<a href="/orders">Orders</a> <a href="/profile">Profile</a>
+      {% if session.role=='admin' %}<a href="/admin" style="color:#febd69;font-weight:700">Admin</a>{% endif %}
+      <a href="/logout">Hi, <b>{{session.u}}</b> · Logout</a>
+    {% else %}<a href="/login">Login</a> <a href="/register">Register</a>{% endif %}
+  </div>
+</nav>
+{% block hero %}{% endblock %}
+<div class=wrap>{% block body %}{% endblock %}</div>
+<footer>© 2026 VShop.in — Secure Shopping (Training Lab)</footer>
+</body></html>

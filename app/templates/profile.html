@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block body %}
+<div class=panel><h1>👤 My Profile</h1>
+{% if msg %}<p class=success>{{msg}}</p>{% endif %}
+<form method=post>
+  <label>Email</label><input name=email type=email value="{{u[3]}}">
+  <br><button class="btn dark">Update Email</button>
+</form>
+<hr style="margin:20px 0">
+<h3>🖼️ Upload Avatar</h3>
+<form method=post action=/avatar enctype=multipart/form-data>
+  <input type=file name=file required>
+  <br><br><button class=btn>Upload</button>
+</form></div>
+{% endblock %}

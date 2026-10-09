@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% block body %}
+<div class=detail>
+  <div><img src="/static/images/p{{p[0]}}.jpg" alt="{{p[1]}}" onerror="this.src='https://picsum.photos/seed/p{{p[0]}}/400/300'"></div>
+  <div>
+    <span class=cat>{{p[2]}}</span>
+    <h1>{{p[1]}}</h1>
+    <div class=big-price>₹{{ '{:,.0f}'.format(p[3]) }}</div>
+    <p>{{p[4]}}</p>
+    {% if session.uid %}
+    <form method=post action=/cart>
+      <input type=hidden name=pid value="{{p[0]}}"><input type=hidden name=name value="{{p[1]}}"><input type=hidden name=price value="{{p[3]}}">
+      <div class=qty-row>Qty: <input name=qty value=1></div>
+      <button class="btn dark" style="width:220px">🛒 Add to Cart</button>
+    </form>
+    {% endif %}
+    <h3 style="margin-top:26px">⭐ Customer Reviews</h3>
+    {% for r in reviews %}<div class=review><b>{{r[1]}}</b> — {{r[0] | safe}}</div>
+    {% else %}<p style=color:#777>No reviews yet.</p>{% endfor %}
+    {% if session.uid %}
+    <form method=post action="/review/{{p[0]}}" style="margin-top:14px">
+      <input name=comment type=text placeholder="Write a review..." style="width:75%;padding:9px;border:1px solid #bbb;border-radius:5px">
+      <button class=btn>Post Review</button></form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

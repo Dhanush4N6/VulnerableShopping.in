@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block hero %}{% endblock %}
+{% block body %}
+<h1>{% if q %}Search results for "{{ q | safe }}"{% else %}Featured Products{% endif %}</h1>
+{% if q %}{% endif %}
+<div class=card-grid>
+{% for p in products %}
+<div class=card>
+  <img src="/static/images/p{{p[0]}}.jpg" alt="{{p[1]}}" onerror="this.src='https://picsum.photos/seed/p{{p[0]}}/400/300'">
+  <div class=info>
+    <span class=cat>{{p[2]}}</span>
+    <span class=name>{{p[1]}}</span>
+    <span class=price>₹{{ '{:,.0f}'.format(p[3]) }} <small>MRP</small></span>
+    <a class=btn href="/product/{{p[0]}}">View Details</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% if q and not products %}<p>No products found.</p>{% endif %}
+{% endblock %}

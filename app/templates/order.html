@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% block body %}
+<div class=panel wide><h1>Order #{{o[0]}}</h1>
+<table><tr><th>Items</th><td>{{o[2]}}</td></tr>
+<tr><th>Total</th><td>₹{{ '{:,.2f}'.format(o[3]) }}</td></tr>
+<tr><th>Status</th><td><span class="badge {{o[4]|lower}}">{{o[4]}}</span></td></tr>
+<tr><th>Card</th><td>{{o[5]}}</td></tr></table>
+<br><a class=btn href="/invoice/{{o[0]}}">🧾 View Invoice</a></div>
+{% endblock %}
