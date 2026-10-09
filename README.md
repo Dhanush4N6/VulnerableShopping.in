@@ -14,6 +14,8 @@ directory, and run the startup script:
 ``` bash
 git clone https://github.com/Dhanush4N6/VulnerableShopping.in.git vshop
 cd vshop
+./setup.sh
+pip install -r requirement.txt
 ./run.sh
 ```
 
@@ -86,3 +88,7 @@ credentials or personal information.
 This project is intended for education and authorized security testing
 only. Do not test these techniques against systems without explicit
 permission.
+
+## Project Documentation
+https://medium.com/@dhanush.nayaka/vulnerable-shopping-f4d741a08b5a?sharedUserId=dhanush.nayaka
+
